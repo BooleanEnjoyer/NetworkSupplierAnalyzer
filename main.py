@@ -2,13 +2,14 @@ from dataReader import get_data
 from dataScaler import scale_data
 from sklearn.model_selection import RepeatedKFold
 from sklearn.linear_model import LinearRegression, Ridge
-from sklearn.preprocessing import PolynomialFeatures
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.neural_network import MLPRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 import numpy as np
+from statisticsCalculator import calculate_r_squared, pair_test
 
+print()
 X, y = get_data()
 X_scaled = scale_data(X)
 
@@ -16,22 +17,27 @@ models = [
     LinearRegression()
     ,DecisionTreeRegressor()
     ,Ridge()
-    ,MLPRegressor()
-    ,RandomForestRegressor()
+    # ,MLPRegressor()
+    # ,RandomForestRegressor()
 ]
 models_names = [
     "LinearRegression"
     ,"DecisionTreeRegressor"
     ,"Ridge"
-    ,"MLPRegressor"
-    ,"RandomForestRegressor"
+    # ,"MLPRegressor"
+    # ,"RandomForestRegressor"
 ]
 models_size = len(models)
 
-metrics_array = [mean_squared_error, mean_absolute_error]
+metrics_array = [
+    mean_squared_error,
+    mean_absolute_error,
+    calculate_r_squared
+]
 metrics_names = [
     "mean_squared_error",
-    "mean_absolute_error"
+    "mean_absolute_error",
+    "r_squared"
 ]
 metrics_size = len(metrics_array)
 
@@ -57,9 +63,13 @@ for model_index, model in enumerate(models):
             cv_scores[model_index, metric_index, current_value_index] = metric_value
         current_value_index += 1
 
-
+print()
 for model_index, model in enumerate(models):
     for metric_index, metric_function in enumerate(metrics_array):
         current_metric = cv_scores[model_index, metric_index]
-        print(f"\n {models_names[model_index]}, metric name: {metrics_names[metric_index]}, mean: {np.mean(current_metric):.5f}, std: {np.std(current_metric):.5f}")
+        print(f"{models_names[model_index]}, metric name: {metrics_names[metric_index]}, mean: "
+              f"{np.mean(current_metric):.6f}, std: {np.std(current_metric):.6f}")
+    print()
 
+
+pair_test(cv_scores, models_names, metrics_names)

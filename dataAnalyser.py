@@ -4,6 +4,7 @@ import seaborn as sns
 
 
 def analyze_data(data):
+    print()
     amount_of_rows_duplicated = data.duplicated().sum()
     print("Rows duplicated:")
     print(amount_of_rows_duplicated)
@@ -29,6 +30,7 @@ def analyze_data(data):
 def base_data_info(data):
     rows_amount = 20
     data_head = data.head(rows_amount)
+    print()
     print(f'First {rows_amount} rows of dataset:')
     print(data_head)
     print("\n")
