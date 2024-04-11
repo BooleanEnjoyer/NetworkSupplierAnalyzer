@@ -2,6 +2,7 @@ import numpy as np
 from scipy.stats import ttest_rel
 from tabulate import tabulate
 
+
 def calculate_r_squared(y_test, y_pred):
     mean_y = np.mean(y_test)
     SST = np.sum((y_test - mean_y) ** 2)
@@ -47,23 +48,3 @@ def pair_test(all_scores_table, models_names, metrics_names):
         print("\n Adv matter matrix")
         print(tabulate(advantage_matter_stat_matrix, headers=models_names, showindex=models_names, tablefmt="grid"))
         print("\n")
-
-
-
-
-
-
-
-
-
-# size_of_training_data = len(y_train)
-# amount_of_predictors = X_train.shape[1]
-# degrees_of_freedom_for_regression = amount_of_predictors - 1
-# degrees_of_freedom_for_residual = size_of_training_data - amount_of_predictors
-# fstat = (SST - SSR) / degrees_of_freedom_for_regression / (SSR / degrees_of_freedom_for_residual)
-# fstat_scores.append(fstat)
-#
-# function = f.cdf(fstat, degrees_of_freedom_for_regression, degrees_of_freedom_for_residual)
-# print(function)
-# pvalue = 1 - function
-# pvalue_scores.append(pvalue)

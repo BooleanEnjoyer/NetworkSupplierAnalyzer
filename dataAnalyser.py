@@ -3,32 +3,40 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-def analyze_data(data):
+def analyze_data(data, data_type_index):
     print()
     amount_of_rows_duplicated = data.duplicated().sum()
     print("Rows duplicated:")
     print(amount_of_rows_duplicated)
     print("\n")
 
-    print("Amount of not unique throughput rows:")
-    amount_of_not_unique_throughput_rows = data['throughput'].nunique()
-    print(amount_of_not_unique_throughput_rows)
-    print("\n")
+    # speed_info(data)
+    plot_histograms(data)
+    plot_heat_map(data)
 
+    if data_type_index == 0:
+        column_name = 'throughput'
+        data_in_column_info(data, column_name)
+        plot_scatterplot_of_column(data, column_name)
+    else:
+        column_name = 'tp_cleaned'
+        data_in_column_info(data, column_name)
+        plot_scatterplot_of_column(data, column_name)
+
+
+def data_in_column_info(data, column_name):
+    print("Amount of not unique throughput rows:")
+    amount_of_not_unique_rows = data[column_name].nunique()
+    print(amount_of_not_unique_rows)
+    print("\n")
     print("Mean throughput:")
-    mean_throughput = data['throughput'].mean()
+    mean_throughput = data[column_name].mean()
     print(mean_throughput)
     print("\n")
 
-    # speed_info(data)
-
-    # plot_histograms(data)
-    # plot_scatterplot_of_throughput(data)
-    plot_heat_map(data)
-
 
 def base_data_info(data):
-    rows_amount = 20
+    rows_amount = 100
     data_head = data.head(rows_amount)
     print()
     print(f'First {rows_amount} rows of dataset:')
@@ -61,11 +69,11 @@ def plot_histograms(data):
         plt.show()
 
 
-def plot_scatterplot_of_throughput(data):
+def plot_scatterplot_of_column(data, column_name):
     for column in data.columns:
-        data.plot(y='throughput', x=column, kind='scatter')
+        data.plot(y=column_name, x=column, kind='scatter')
         plt.xlabel(column)
-        plt.ylabel('throughput')
+        plt.ylabel(column_name)
         plt.title(f'Scatterplot of {column}')
         plt.show()
 

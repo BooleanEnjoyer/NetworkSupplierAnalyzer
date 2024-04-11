@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="634be249-2e9e-4225-a74c-2de96d1fac84" name="Changes" comment="Base regressor and data analyser">
-      <change afterPath="$PROJECT_DIR$/statisticsCalculator.py" afterDir="false" />
+    <list default="true" id="634be249-2e9e-4225-a74c-2de96d1fac84" name="Changes" comment="Proper metrics applied to learned model, Added new metrics, changed structure to be more flaxible, added T-student test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataAnalyser.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataAnalyser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataReader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statisticsCalculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/statisticsCalculator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,12 +89,21 @@
       <option name="project" value="LOCAL" />
       <updated>1712680267932</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Proper metrics applied to learned model, Added new metrics, changed structure to be more flaxible, added T-student test">
+      <option name="closed" value="true" />
+      <created>1712765067613</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712765067613</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Dataset read" />
     <MESSAGE value="Base regressor and data analyser" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base regressor and data analyser" />
+    <MESSAGE value="Proper metrics applied to learned model, Added new metrics, changed structure to be more flaxible, added T-student test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Proper metrics applied to learned model, Added new metrics, changed structure to be more flaxible, added T-student test" />
   </component>
 </project>
