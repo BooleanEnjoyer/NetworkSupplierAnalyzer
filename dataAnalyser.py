@@ -3,25 +3,24 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-def analyze_data(data, data_type_index):
+def analyze_data(data, current_data_type):
     print()
     amount_of_rows_duplicated = data.duplicated().sum()
     print("Rows duplicated:")
     print(amount_of_rows_duplicated)
     print("\n")
 
-    # speed_info(data)
-    plot_histograms(data)
-    plot_heat_map(data)
-
-    if data_type_index == 0:
+    if current_data_type == "Download":
         column_name = 'throughput'
         data_in_column_info(data, column_name)
-        plot_scatterplot_of_column(data, column_name)
     else:
         column_name = 'tp_cleaned'
         data_in_column_info(data, column_name)
-        plot_scatterplot_of_column(data, column_name)
+
+    # speed_info(data)
+    # plot_histograms(data)
+    # plot_scatterplot_of_column(data, column_name)
+    # plot_heat_map(data)
 
 
 def data_in_column_info(data, column_name):

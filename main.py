@@ -14,11 +14,11 @@ download_data = get_download_data()
 upload_data = get_upload_data()
 
 all_data = [
-    # download_data,
+    download_data,
     upload_data
 ]
 all_data_names = [
-    # "Download",
+    "Download",
     "Upload"
 ]
 
@@ -27,14 +27,14 @@ company_names = get_company_names()
 models = [
     LinearRegression()
     ,DecisionTreeRegressor()
-    # ,Ridge()
+    ,Ridge()
     # ,MLPRegressor()
     # ,RandomForestRegressor()
 ]
 models_names = [
     "LinearRegression"
     ,"DecisionTreeRegressor"
-    # ,"Ridge"
+    ,"Ridge"
     # ,"MLPRegressor"
     # ,"RandomForestRegressor"
 ]
@@ -63,7 +63,7 @@ for data_type_index, data_type in enumerate(all_data):
     print(f"Data type: {all_data_names[data_type_index]}")
     for company_data_index, company_data in enumerate(current_data_type):
         print(f"Company: {company_names[company_data_index]}")
-        X, y = process_data(company_data, data_type_index)
+        X, y = process_data(company_data, all_data_names[data_type_index])
         X_scaled = scale_data(X)
         current_value_index = 0
         for model_index, model in enumerate(models):
@@ -84,8 +84,7 @@ for data_type_index, data_type in enumerate(all_data):
             for metric_index, metric_function in enumerate(metrics_array):
                 current_metric = cv_scores[model_index, metric_index]
                 print(f"{models_names[model_index]}, metric name: {metrics_names[metric_index]}, mean: "
-                      f"{np.mean(current_metric):.6f}, std: {np.std(current_metric):.6f}")
+                      f"{np.mean(current_metric):.10f}, std: {np.std(current_metric):.10f}")
             print()
+        pair_test(cv_scores, models_names, metrics_names)
 
-
-pair_test(cv_scores, models_names, metrics_names)
