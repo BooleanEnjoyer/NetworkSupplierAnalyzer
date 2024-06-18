@@ -39,6 +39,8 @@ def process_data(data, current_data_type):
         # analyze_data(data, current_data_type)
         X = data.drop(['qualitytimestamp', 'tp_cleaned', 'gpstime', 'longitude', 'latitude', 'speed'], axis=1)
         y = data['tp_cleaned']
+    print(f"Actual value min: {min(y)}")
+    print(f"Actual value max: {max(y)}")
     return X, y
 
 

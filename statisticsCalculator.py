@@ -21,12 +21,14 @@ def pair_test(all_scores_table, models_names, metrics_names):
     statistics_matters_matrix = np.zeros((n_experiment_objects, n_experiment_objects), dtype=bool)
     alpha = 0.05
 
-    for z in range(n_metrics):
-        print(f"\n Test for metric: {metrics_names[z]}")
+    for metric_index in range(n_metrics):
+        print(f"\n Test for metric: {metrics_names[metric_index]}")
         for i in range(n_experiment_objects):
             for j in range(n_experiment_objects):
-                first_scores_table = all_scores_table[i, z, :]
-                second_scores_table = all_scores_table[j, z, :]
+                first_scores_table = all_scores_table[i, metric_index, :]
+                # print (f" First scores table: {first_scores_table}")
+                second_scores_table = all_scores_table[j, metric_index, :]
+                # print(f" Second scores table: {second_scores_table}")
                 stat, p_value = ttest_rel(first_scores_table, second_scores_table)
 
                 t_student_matrix[i, j] = stat
